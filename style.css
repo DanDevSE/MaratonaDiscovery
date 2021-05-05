@@ -233,11 +233,15 @@ color: var(--red);
 
     opacity:0;
     visibility:hidden;
+
+    z-index: 999;
 }
 
 .modal{
     background: #f0f2f5;
-    padding: 2.4rem;       
+    padding: 2.4rem;
+    position: relative;
+    z-index: 1;       
 }
 /* Form --------------------------------- */
 
