@@ -9,33 +9,33 @@ const Modal = {
   },
 };
 
-const transactions = [
-  {
-    id: 1,
-    description: "luz",
-    amount: -50000,
-    date: "23/01/2021",
-  },
-  {
-    id: 2,
-    description: "WebSite",
-    amount: 500000,
-    date: "23/01/2021",
-  },
-  {
-    id: 3,
-    description: "Internet",
-    amount: -20000,
-    date: "23/01/2021",
-  },
-];
-
 const Transaction = {
-  all: transactions,
+  all: [
+    {
+      description: "luz",
+      amount: -50000,
+      date: "23/01/2021",
+    },
+    {
+      description: "WebSite",
+      amount: 500000,
+      date: "23/01/2021",
+    },
+    {
+      description: "Internet",
+      amount: -20000,
+      date: "23/01/2021",
+    },
+  ],
 
   add(transaction) {
     Transaction.all.push(transaction);
 
+    App.reload();
+  },
+
+  remove(index) {
+    Transaction.all.splice(index, 1);
     App.reload();
   },
 
@@ -128,6 +128,28 @@ const Utils = {
   },
 };
 
+const Form = {
+  description: document.querySelector('input#description'),
+  amount: document.querySelector('input#amount'),
+  date: document.querySelector('input#date'),
+
+getValues(){
+  return {
+    description: Form.description.value,
+    amount: Form.amount.value,
+    date: Form.date.value
+  }
+}
+
+  formatData() {},
+
+  validateFields() {},
+
+  submit(event) {
+    event.preventDefault();
+  },
+};
+
 const App = {
   init() {
     Transaction.all.forEach((transaction) => {
@@ -137,8 +159,7 @@ const App = {
     DOM.updateBalance();
   },
   reload() {
-    DOM.clearTransactions(),
-    App.init();
+    DOM.clearTransactions(), App.init();
   },
 };
 
