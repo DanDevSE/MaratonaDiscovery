@@ -139,7 +139,7 @@ getValues(){
     amount: Form.amount.value,
     date: Form.date.value
   }
-}
+},
 
   formatData() {},
 
